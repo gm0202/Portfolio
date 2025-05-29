@@ -2,11 +2,11 @@ import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import * as THREE from 'three';
+import { Mesh } from 'three';
 
 // A simple 3D component (e.g., a rotating cube)
 const RotatingCube = () => {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const meshRef = useRef<Mesh>(null);
 
   useFrame(() => {
     if (meshRef.current) {
