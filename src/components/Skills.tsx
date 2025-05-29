@@ -1,5 +1,26 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+
+// A simple 3D component (e.g., a rotating cube)
+const RotatingCube = () => {
+  const meshRef = useRef<THREE.Mesh>(null);
+
+  useFrame(() => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x += 0.01;
+      meshRef.current.rotation.y += 0.01;
+    }
+  });
+
+  return (
+    <mesh ref={meshRef}>
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color="#64ffda" />
+    </mesh>
+  );
+};
 
 const skillCategories = [
   {
@@ -22,8 +43,17 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20">
-      <div className="container mx-auto px-4">
+    <section id="skills" className="py-20 relative">
+      <div className="absolute inset-0 z-0">
+         <Canvas camera={{ position: [0, 0, 5] }}>
+            <ambientLight intensity={0.5} />
+            <pointLight position={[10, 10, 10]} />
+            <RotatingCube />
+            <OrbitControls enableZoom={false} />
+         </Canvas>
+      </div>
+
+      <div className="container mx-auto px-4 z-10 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
