@@ -36,7 +36,7 @@ const projects: Project[] = [
   {
     title: 'TrafficController – AI-Based Traffic Control System',
     description: 'An AI-powered system that dynamically adjusts traffic signals based on real-time traffic density using computer vision.',
-    technologies: ['Python', 'OpenCV', 'TensorFlow', 'SSD'],
+    technologies: ['Python', 'OpenCV', 'TensorFlow', 'SSD', 'Flask'],
     github: 'https://github.com/gm0202/TrafficController',
     role: 'ML Engineer, Vision System Developer'
   },
