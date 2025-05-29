@@ -1,38 +1,49 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+// Import the certification logos
+import awsLogo from '../Assets/AWS.png';
+import ciscoLogo from '../Assets/cisco.png';
+import ibmLogo from '../Assets/IBM.png';
+import nvidiaLogo from '../Assets/NVIDIA.png';
 
 interface Certification {
   title: string;
   issuer: string;
   link: string;
   date?: string;
+  image?: string; // Add image property
 }
 
 const certifications: Certification[] = [
   {
     title: 'Cisco Ethical Hacker',
     issuer: 'Cisco',
-    link: 'https://www.credly.com/badges/c6f4baf7-cac3-4c38-8714-2012f37c3fd6'
+    link: 'https://www.credly.com/badges/c6f4baf7-cac3-4c38-8714-2012f37c3fd6',
+    image: ciscoLogo, // Add the imported logo
   },
   {
     title: 'Deep Learning',
     issuer: 'NVIDIA Deep Learning Institute',
-    link: 'https://learn.nvidia.com/certificates?id=JUuBr8TbSdCemAs3i3rHPQ'
+    link: 'https://learn.nvidia.com/certificates?id=JUuBr8TbSdCemAs3i3rHPQ',
+    image: nvidiaLogo, // Add the imported logo
   },
   {
     title: 'AWS Academy Machine Learning Foundations',
     issuer: 'Amazon Web Services',
-    link: 'https://www.credly.com/badges/001f0652-a4f7-4bd1-812e-5df5ba662e3f/print'
+    link: 'https://www.credly.com/badges/001f0652-a4f7-4bd1-812e-5df5ba662e3f/print',
+    image: awsLogo, // Add the imported logo
   },
   {
     title: 'IBM Data Science Methodology',
     issuer: 'IBM (Cognitive Class)',
-    link: 'https://courses.cognitiveclass.ai/certificates/b41d7b65ed1c47f09a2ace6c3126141a'
+    link: 'https://courses.cognitiveclass.ai/certificates/b41d7b65ed1c47f09a2ace6c3126141a',
+    image: ibmLogo, // Add the imported logo
   },
   {
     title: 'Cisco Introduction to Data Science',
     issuer: 'Cisco',
-    link: 'https://www.credly.com/badges/d0a7c0fd-4c29-4009-84a3-37cafc2b7047'
+    link: 'https://www.credly.com/badges/d0a7c0fd-4c29-4009-84a3-37cafc2b7047',
+    image: ciscoLogo, // Add the imported logo
   }
 ];
 
@@ -56,15 +67,27 @@ const Experience = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-tertiary p-6 rounded-lg hover:transform hover:scale-105 transition-all duration-300"
+                className="bg-tertiary p-6 rounded-lg hover:transform hover:scale-105 transition-all duration-300 flex flex-col justify-between"
               >
-                <h3 className="text-xl font-semibold mb-2 text-secondary">{cert.title}</h3>
-                <p className="text-textSecondary mb-4">Issued by {cert.issuer}</p>
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="text-xl font-semibold text-secondary">{cert.title}</h3>
+                    <p className="text-textSecondary">{cert.issuer}</p>
+                  </div>
+                  {cert.image && (
+                    <img
+                      src={cert.image}
+                      alt={`${cert.issuer} logo`}
+                      className="h-10 w-auto object-contain ml-4"
+                    />
+                  )}
+                </div>
+
                 <a
                   href={cert.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-secondary hover:text-secondary/80 transition-colors duration-300 inline-flex items-center"
+                  className="text-secondary hover:text-secondary/80 transition-colors duration-300 inline-flex items-center self-end"
                 >
                   View Certificate
                   <svg
