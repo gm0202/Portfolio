@@ -1,3 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-primary text-textPrimary;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply text-textSecondary hover:text-secondary transition-colors duration-300;
+  }
+  
+  .section-title {
+    @apply text-3xl font-bold mb-8 text-textPrimary;
+  }
+  
+  .project-card {
+    @apply bg-tertiary p-6 rounded-lg hover:transform hover:scale-105 transition-all duration-300;
+  }
+  
+  .skill-tag {
+    @apply px-3 py-1 bg-tertiary text-secondary rounded-full text-sm;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
